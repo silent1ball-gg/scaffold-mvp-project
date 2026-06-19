@@ -9,7 +9,15 @@ from pathlib import Path
 
 
 REQUIRED = {
-    "goal.md": ["# Goal", "## User Request", "## Assumptions", "## Non-Goals", "## Target User", "## Success Criteria"],
+    "goal.md": [
+        "# Goal",
+        "## User Request",
+        "## MVP Definition",
+        "## Assumptions",
+        "## Non-Goals",
+        "## Target User",
+        "## Success Criteria",
+    ],
     "mvp-flow.md": [
         "# MVP Flow",
         "## Milestone 1: Project Foundation",
@@ -19,7 +27,7 @@ REQUIRED = {
         "## Later",
     ],
     "file-structure.md": ["# File Structure", "## Proposed Tree", "## Path Responsibilities"],
-    "decisions.md": ["# Decisions", "## Initial Choices", "## Open Questions", "## Constraints"],
+    "decisions.md": ["# Decisions", "## Technical Route", "## Initial Choices", "## Open Questions", "## Constraints"],
 }
 
 
@@ -31,6 +39,8 @@ def validate_docs(target_dir: Path) -> list[str]:
         return [f"Directory not found: {target_dir}"]
     if not docs_dir.exists():
         return [f"docs directory not found: {docs_dir}"]
+    if not (target_dir / "Archive").exists():
+        errors.append(f"Archive directory not found: {target_dir / 'Archive'}")
 
     for filename, headings in REQUIRED.items():
         path = docs_dir / filename

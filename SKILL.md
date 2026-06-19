@@ -1,13 +1,13 @@
 ---
 name: scaffold-mvp-project
-description: Create a new engineering project folder and lightweight docs package before implementation. Use when the user states an engineering goal, product idea, app/tool request, or build objective and wants Codex to first scaffold the project, create a docs/ directory, define MVP workflow steps, and document the initial project file structure before coding.
+description: Create a new engineering project folder and lightweight docs package before implementation. Use when the user states an engineering goal, product idea, app/tool request, or build objective and wants Codex to first scaffold the project, create docs/ and Archive/ directories, define MVP workflow steps using a future-preserving technical route, and document the initial project file structure before coding.
 ---
 
 # Scaffold MVP Project
 
 ## Overview
 
-Use this skill to turn a broad engineering goal into a concrete project workspace before implementation. The first deliverable is the project folder and its `docs/` directory, not production code.
+Use this skill to turn a broad engineering goal into a concrete project workspace before implementation. MVP means choosing a technical route that should not need to be completely thrown away later, then implementing the smallest core capability first. The first deliverable is the project folder and its planning structure, not production code.
 
 ## Workflow
 
@@ -17,7 +17,7 @@ Use this skill to turn a broad engineering goal into a concrete project workspac
    - If the destination is ambiguous, use the current workspace unless that would be unsafe or clearly surprising.
 
 2. Create the project folder first.
-   - Prefer running `scripts/scaffold_mvp_project.py` to create the root project directory, `docs/` skeleton, and default `experiments/` directory.
+   - Prefer running `scripts/scaffold_mvp_project.py` to create the root project directory, `docs/` skeleton, `Archive/`, and default `experiments/` directory.
    - Do not create source-code directories until the MVP plan and file structure have been written, unless the user explicitly asks for code scaffolding too.
 
 3. Write the docs package.
@@ -26,10 +26,12 @@ Use this skill to turn a broad engineering goal into a concrete project workspac
    - `mvp-flow.md`: the MVP process steps from setup through the first usable demo.
    - `file-structure.md`: proposed project file tree with one-line responsibility notes for each important path.
    - `decisions.md`: initial technical choices, open questions, and constraints.
+   - `Archive/`: a project-level archive for superseded plans, old notes, replaced artifacts, or retained context that should not clutter active docs.
    - `experiments/`: reserved workspace for future experimental features.
 
 4. Keep the MVP scope practical.
-   - Prefer the smallest usable workflow that demonstrates the core value.
+   - Prefer the smallest core workflow that demonstrates the core value.
+   - Choose a technical route that can continue into the future product instead of a disposable prototype path.
    - Separate required MVP work from later enhancements.
    - Include verification steps for each major milestone.
    - Avoid over-designing infrastructure, abstractions, or optional services before the core loop is clear.
@@ -47,7 +49,7 @@ Use `scripts/scaffold_mvp_project.py` for repeatable folder and docs creation:
 python scripts/scaffold_mvp_project.py --name my-project --goal "Build a local search tool" --dest .
 ```
 
-The script creates the project folder, `docs/`, `experiments/`, and the four required docs files with stable section templates. After running it, replace TODOs with goal-specific planning and adjust `file-structure.md` to match the likely implementation stack.
+The script creates the project folder, `docs/`, `Archive/`, `experiments/`, and the four required docs files with stable section templates. After running it, replace TODOs with goal-specific planning and adjust `file-structure.md` to match the likely implementation stack.
 
 For an experimental feature, scaffold it as a nested mini-project under `experiments/`:
 
@@ -55,7 +57,7 @@ For an experimental feature, scaffold it as a nested mini-project under `experim
 python scripts/scaffold_mvp_project.py --name my-project --dest . --experiment new-feature --experiment-goal "Try a faster import flow" --experiment-only
 ```
 
-This creates `my-project/experiments/new-feature/docs/` with the same four docs: `goal.md`, `mvp-flow.md`, `file-structure.md`, and `decisions.md`. Treat each experiment as an isolated MVP with its own goal, steps, and file structure before merging it into the main project plan.
+This creates `my-project/experiments/new-feature/docs/` and `my-project/experiments/new-feature/Archive/` with the same four docs: `goal.md`, `mvp-flow.md`, `file-structure.md`, and `decisions.md`. Treat each experiment as an isolated MVP with its own goal, steps, and file structure before merging it into the main project plan.
 
 Use `scripts/validate_mvp_docs.py` before reporting completion:
 
@@ -63,7 +65,7 @@ Use `scripts/validate_mvp_docs.py` before reporting completion:
 python scripts/validate_mvp_docs.py ./my-project
 ```
 
-The validation script checks that the required docs, headings, and top-level `experiments/` directory exist. Add `--experiments` to validate every experiment folder too:
+The validation script checks that the required docs, headings, `Archive/`, and top-level `experiments/` directory exist. Add `--experiments` to validate every experiment folder too:
 
 ```bash
 python scripts/validate_mvp_docs.py ./my-project --experiments
@@ -79,6 +81,8 @@ For `goal.md`, include:
 # Goal
 
 ## User Request
+
+## MVP Definition
 
 ## Assumptions
 
@@ -124,8 +128,10 @@ Default project tree:
 │   ├── mvp-flow.md
 │   ├── file-structure.md
 │   └── decisions.md
+├── Archive/
 ├── experiments/
 │   └── <experiment-name>/
+│       ├── Archive/
 │       └── docs/
 │           ├── goal.md
 │           ├── mvp-flow.md
@@ -138,6 +144,8 @@ For `decisions.md`, include:
 
 ```markdown
 # Decisions
+
+## Technical Route
 
 ## Initial Choices
 
