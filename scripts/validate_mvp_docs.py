@@ -12,6 +12,7 @@ REQUIRED = {
     "goal.md": [
         "# Goal",
         "## User Request",
+        "## Purpose Analysis",
         "## MVP Definition",
         "## Assumptions",
         "## Non-Goals",
@@ -27,7 +28,13 @@ REQUIRED = {
         "## Later",
     ],
     "file-structure.md": ["# File Structure", "## Proposed Tree", "## Path Responsibilities"],
-    "decisions.md": ["# Decisions", "## Technical Route", "## Initial Choices", "## Open Questions", "## Constraints"],
+    "decisions.md": [
+        "# Decisions",
+        "## Long-Term Maintainable Technical Route",
+        "## Initial Choices",
+        "## Open Questions",
+        "## Constraints",
+    ],
 }
 
 

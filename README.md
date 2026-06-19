@@ -2,9 +2,9 @@
 
 Codex skill for turning a broad engineering goal into a concrete project folder with a lightweight MVP planning package.
 
-When this skill is used, Codex should first scaffold the project workspace, create `docs/` and `Archive/`, write the core MVP planning files, and document the proposed file structure before implementation begins.
+When this skill is used, Codex should first assume a long-lived maintainable technical route, parse the user's purpose, scaffold the project workspace, create `docs/` and `Archive/`, write the core MVP planning files, and document the proposed file structure before implementation begins.
 
-MVP means choosing a technical route that should not need to be completely thrown away later, then implementing the smallest core capability first.
+MVP means using one long-lived, maintainable technical route that should remain valid as the project grows, then implementing the smallest core capability that serves the user's purpose.
 
 ## Contents
 

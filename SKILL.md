@@ -1,43 +1,59 @@
 ---
 name: scaffold-mvp-project
-description: Create a new engineering project folder and lightweight docs package before implementation. Use when the user states an engineering goal, product idea, app/tool request, or build objective and wants Codex to first scaffold the project, create docs/ and Archive/ directories, define MVP workflow steps using a future-preserving technical route, and document the initial project file structure before coding.
+description: Create a new engineering project folder and lightweight docs package before implementation. Use when the user states an engineering goal, product idea, app/tool request, or build objective and wants Codex to first assume a long-lived maintainable technical route, parse the user's purpose, scaffold the project, create docs/ and Archive/ directories, define MVP workflow steps, and document the initial project file structure before coding.
 ---
 
 # Scaffold MVP Project
 
 ## Overview
 
-Use this skill to turn a broad engineering goal into a concrete project workspace before implementation. MVP means choosing a technical route that should not need to be completely thrown away later, then implementing the smallest core capability first. The first deliverable is the project folder and its planning structure, not production code.
+Use this skill to turn a broad engineering goal into a concrete project workspace before implementation.
+
+Core premise: plan with one long-lived, maintainable technical route that should remain valid as the project grows. Do not choose a disposable prototype route that will predictably require a full rewrite.
+
+MVP means: after accepting that long-term technical premise, parse the user's real purpose, then implement the smallest core capability that serves that purpose. The first deliverable is the project folder and its planning structure, not production code.
 
 ## Workflow
 
-1. Determine the project folder name.
+1. Apply the technical-route premise.
+   - Treat long-term maintainability as a requirement, not a later enhancement.
+   - Prefer boring, durable, locally understandable choices over throwaway shortcuts.
+   - If the user suggests a stack that conflicts with the likely future direction, document the concern in `docs/decisions.md` instead of silently following it.
+
+2. Parse the user's purpose.
+   - Identify the real outcome the user wants, not only the literal feature request.
+   - Name the first user or operator and their core job-to-be-done.
+   - Separate the minimum core value from nice-to-have workflow, UI, automation, or deployment details.
+
+3. Determine the project folder name.
    - If the user gives a path or name, preserve it.
    - If not, derive a short lowercase hyphen-case name from the goal.
    - If the destination is ambiguous, use the current workspace unless that would be unsafe or clearly surprising.
 
-2. Create the project folder first.
+4. Create the project folder first.
    - Prefer running `scripts/scaffold_mvp_project.py` to create the root project directory, `docs/` skeleton, `Archive/`, and default `experiments/` directory.
    - Do not create source-code directories until the MVP plan and file structure have been written, unless the user explicitly asks for code scaffolding too.
 
-3. Write the docs package.
+5. Write the docs package.
    Create these files in `docs/`:
-   - `goal.md`: user goal, assumptions, non-goals, target users or operators, and success criteria.
+   - `goal.md`: user request, purpose analysis, MVP definition, assumptions, non-goals, target users or operators, and success criteria.
    - `mvp-flow.md`: the MVP process steps from setup through the first usable demo.
    - `file-structure.md`: proposed project file tree with one-line responsibility notes for each important path.
-   - `decisions.md`: initial technical choices, open questions, and constraints.
+   - `decisions.md`: long-term maintainable technical route, initial choices, open questions, and constraints.
    - `Archive/`: a project-level archive for superseded plans, old notes, replaced artifacts, or retained context that should not clutter active docs.
    - `experiments/`: reserved workspace for future experimental features.
 
-4. Keep the MVP scope practical.
+6. Keep the MVP scope practical.
    - Prefer the smallest core workflow that demonstrates the core value.
-   - Choose a technical route that can continue into the future product instead of a disposable prototype path.
+   - Keep the selected technical route aligned with the future product, even when the first delivered slice is tiny.
    - Separate required MVP work from later enhancements.
    - Include verification steps for each major milestone.
    - Avoid over-designing infrastructure, abstractions, or optional services before the core loop is clear.
 
-5. Report the result.
+7. Report the result.
    - Link the created project folder and docs files.
+   - Summarize the parsed user purpose.
+   - Summarize the long-term maintainable technical-route assumption.
    - Summarize the MVP steps and the proposed file structure.
    - Call out assumptions and any decisions that need user confirmation.
 
@@ -81,6 +97,8 @@ For `goal.md`, include:
 # Goal
 
 ## User Request
+
+## Purpose Analysis
 
 ## MVP Definition
 
@@ -145,7 +163,7 @@ For `decisions.md`, include:
 ```markdown
 # Decisions
 
-## Technical Route
+## Long-Term Maintainable Technical Route
 
 ## Initial Choices
 

@@ -1,4 +1,4 @@
 interface:
   display_name: "Scaffold MVP Project"
   short_description: "Create project folders and MVP docs"
-  default_prompt: "Use $scaffold-mvp-project to turn this engineering goal into a project folder, docs, MVP steps, and file structure."
+  default_prompt: "Use $scaffold-mvp-project to parse this engineering goal, assume a long-term maintainable technical route, and create the project folder, docs, MVP steps, and file structure."

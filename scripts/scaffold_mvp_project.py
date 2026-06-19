@@ -16,9 +16,15 @@ DOCS = {
 
 {goal}
 
+## Purpose Analysis
+
+- TODO: Identify the real outcome the user wants.
+- TODO: Name the first user or operator and their core job-to-be-done.
+- TODO: Separate the minimum core value from nice-to-have details.
+
 ## MVP Definition
 
-Build the smallest core capability first on a technical route that should not need to be completely thrown away later.
+Use one long-lived, maintainable technical route that should remain valid as the project grows, then build the smallest core capability that serves the user's purpose.
 
 ## Assumptions
 
@@ -41,7 +47,7 @@ Build the smallest core capability first on a technical route that should not ne
 ## Milestone 1: Project Foundation
 
 - TODO: Create the repository or project folder.
-- TODO: Confirm the future-preserving technical route, runtime, package manager, and local run command.
+- TODO: Confirm the long-lived maintainable technical route, runtime, package manager, and local run command.
 - Verification: TODO.
 
 ## Milestone 2: Core Data or Domain Model
@@ -101,9 +107,10 @@ Build the smallest core capability first on a technical route that should not ne
 """,
     "decisions.md": """# Decisions
 
-## Technical Route
+## Long-Term Maintainable Technical Route
 
 - TODO: Choose a route that can support the future product direction without a full rewrite.
+- TODO: Explain why this route remains maintainable after the MVP grows.
 
 ## Initial Choices
 
